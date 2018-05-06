@@ -8,7 +8,7 @@ class StringCalculator
 
       raise "negatives not allowed: #{negative_numbers.join(', ')}" if negative_numbers.any?
 
-      split_numbers.reduce(0, :+)
+      split_numbers.select { |num| num <= 1000 }.reduce(0, :+)
     end
 
     private
