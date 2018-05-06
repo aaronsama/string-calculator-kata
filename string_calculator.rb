@@ -3,14 +3,12 @@ class StringCalculator
   class << self
     # Splits a set of comma separated numbers and sums them
     def add(numbers)
-      split_numbers = numbers.split(default_delimiter(numbers))
-      negative_numbers = split_numbers.select { |num| num.to_i.negative? }
+      split_numbers = numbers.split(default_delimiter(numbers)).map(&:to_i)
+      negative_numbers = split_numbers.select(&:negative?)
 
       raise "negatives not allowed: #{negative_numbers.join(', ')}" if negative_numbers.any?
 
-      split_numbers.inject(0) do |acc, num|
-        acc += num.to_i
-      end
+      split_numbers.reduce(0, :+)
     end
 
     private
