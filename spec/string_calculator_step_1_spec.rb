@@ -2,8 +2,6 @@ require './string_calculator'
 require './spec/shared_examples'
 
 describe StringCalculator, '#add' do
-  subject(:calculator) { StringCalculator }
-
   context "when the input is an empty string" do
     it_behaves_like 'string calculator', '', 0
   end
