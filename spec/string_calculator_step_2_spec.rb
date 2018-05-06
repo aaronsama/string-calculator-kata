@@ -1,11 +1,10 @@
 require './string_calculator'
+require './spec/shared_examples'
 
 describe StringCalculator, '#add' do
   subject(:calculator) { StringCalculator }
 
   context "when the input is n numbers" do
-    it "sums the numbers" do
-      expect(calculator.add('1,2,3')).to eq(6)
-    end
+    it_behaves_like 'string calculator', '1,2,3', 6
   end
 end
