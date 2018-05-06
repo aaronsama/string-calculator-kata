@@ -4,11 +4,12 @@ class StringCalculator
     # Splits a set of comma separated numbers and sums them
     def add(numbers)
       split_numbers = numbers.split(default_delimiter(numbers))
+      negative_numbers = split_numbers.select { |num| num.to_i.negative? }
+
+      raise "negatives not allowed: #{negative_numbers.join(', ')}" if negative_numbers.any?
 
       split_numbers.inject(0) do |acc, num|
-        number = num.to_i
-        raise 'negatives not allowed' if number.negative?
-        acc += number
+        acc += num.to_i
       end
     end
 
