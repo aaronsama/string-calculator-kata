@@ -1,4 +1,4 @@
-require './string_calculator'
+require './lib/string_calculator'
 require './spec/shared_examples'
 
 describe StringCalculator, '#add' do
