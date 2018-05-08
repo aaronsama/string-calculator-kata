@@ -5,7 +5,7 @@ function split(numbers) {
   let nums = numbers;
 
   if (numbers.startsWith('//')) {
-    delimiter = numbers.match(/^\/\/(.)/)[1];
+    delimiter = numbers.match(new RegExp('//(.)\n'))[1];
     nums = numbers.match(new RegExp(`^//${delimiter}\n([^$]+)$`))[1];
   }
 
@@ -14,7 +14,7 @@ function split(numbers) {
 
 // find all the negative numbers in an array
 function negatives(numbers) {
-  return numbers.filter((number) => number < 0)
+  return numbers.filter((number) => number < 0);
 }
 
 // sum all the numbers but filter those larger than 1000
@@ -31,10 +31,10 @@ function add(numbers) {
     return 0
   } else {
     const splitNumbers = split(numbers);
-    const negativeNumbers = negatives(splitNumbers)
+    const negativeNumbers = negatives(splitNumbers);
 
     if (negativeNumbers.length > 0) {
-      throw new Error(`negatives not allowed: ${negativeNumbers}`)
+      throw new Error(`negatives not allowed: ${negativeNumbers}`);
     } else {
       return split(numbers).reduce(sumReducer, 0);
     }
