@@ -1,4 +1,4 @@
-class StringCalculator
+module StringCalculator
 
   class << self
     # Splits a set of comma separated numbers and sums them
