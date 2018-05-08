@@ -1,14 +1,15 @@
 // split the string according to the delimiter defined at the
 // beginning of the string or at ','
 function split(numbers) {
-  if (numbers.startsWith('//')) {
-    const [delimiterDefinition, nums] = numbers.split(/\n([^$]+)/);
-    const delimiter = delimiterDefinition.match(/^\/\/(.)/)[1];
+  let delimiter = ',';
+  let nums = numbers;
 
-    return nums.split(new RegExp(`${delimiter}|\n`));
-  } else {
-    return numbers.split(/,|\n/);
+  if (numbers.startsWith('//')) {
+    delimiter = numbers.match(/^\/\/(.)/)[1];
+    nums = numbers.match(new RegExp(`^//${delimiter}\n([^$]+)$`))[1];
   }
+
+  return nums.split(new RegExp(`${delimiter}|\n`)).map((num) => parseInt(num));
 }
 
 // find all the negative numbers in an array
@@ -18,10 +19,8 @@ function negatives(numbers) {
 
 // sum all the numbers but filter those larger than 1000
 function sumReducer(accumulator, number) {
-  const num = parseInt(number);
-
-  if (num <= 1000) {
-    return accumulator + num;
+  if (number <= 1000) {
+    return accumulator + number;
   } else {
     return accumulator;
   }
