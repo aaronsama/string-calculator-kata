@@ -16,9 +16,15 @@ function negatives(numbers) {
   return numbers.filter((number) => number < 0)
 }
 
-// sum all the numbers
+// sum all the numbers but filter those larger than 1000
 function sumReducer(accumulator, number) {
-  return accumulator + parseInt(number);
+  const num = parseInt(number);
+
+  if (num <= 1000) {
+    return accumulator + num;
+  } else {
+    return accumulator;
+  }
 }
 
 function add(numbers) {
