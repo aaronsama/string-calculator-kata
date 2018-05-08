@@ -6,7 +6,7 @@ function add(numbers) {
   if (numbers.length === 0) {
     return 0
   } else {
-    const splitNumbers = numbers.split(',')
+    const splitNumbers = numbers.split(/,|\n/)
     return splitNumbers.reduce(sumReducer, 0);
   }
 }
